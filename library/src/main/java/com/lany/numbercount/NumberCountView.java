@@ -10,12 +10,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class NumberCountView extends RelativeLayout {
-    private OnValueChangeListener listener;
-    private TextView mContentText;
+    private OnValueChangeListener mListener;
+    private TextView mValueText;
     private SquaredImageView mMinusBtn, mPlusBtn;
-    private int value = 0;
-    private int minValue = 0;
-    private int maxValue = 100;
+    private int mValue = 0;
+    private int mMinValue = 0;
+    private int mMaxValue = 99;
 
     public NumberCountView(Context context) {
         this(context, null);
@@ -28,7 +28,7 @@ public class NumberCountView extends RelativeLayout {
 
     private void initViews(AttributeSet attrs) {
         LayoutInflater.from(getContext()).inflate(R.layout.view_number_count, this, true);
-        mContentText = findViewById(R.id.tvStepperContent);
+        mValueText = findViewById(R.id.tvStepperContent);
         mMinusBtn = findViewById(R.id.ivStepperMinus);
         mPlusBtn = findViewById(R.id.ivStepperPlus);
 
@@ -42,9 +42,9 @@ public class NumberCountView extends RelativeLayout {
         float contentTextSize = 0;
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.NumberCountView);
-            minValue = a.getInt(R.styleable.NumberCountView_ncv_min, minValue);
-            maxValue = a.getInt(R.styleable.NumberCountView_ncv_max, maxValue);
-            value = a.getInt(R.styleable.NumberCountView_ncv_value, value);
+            mMinValue = a.getInt(R.styleable.NumberCountView_ncv_min, mMinValue);
+            mMaxValue = a.getInt(R.styleable.NumberCountView_ncv_max, mMaxValue);
+            mValue = a.getInt(R.styleable.NumberCountView_ncv_value, mValue);
             background = a.getDrawable(R.styleable.NumberCountView_ncv_background);
             contentBackground = a.getDrawable(R.styleable.NumberCountView_ncv_contentBackground);
             leftButtonResources = a.getDrawable(R.styleable.NumberCountView_ncv_leftButtonResources);
@@ -64,79 +64,83 @@ public class NumberCountView extends RelativeLayout {
         if (contentBackground != null) {
             setContentBackground(contentBackground);
         }
-        mContentText.setTextColor(contentTextColor);
-        if (contentTextSize > 0)
-            setContentTextSize(contentTextSize);
-
+        mValueText.setTextColor(contentTextColor);
+        if (contentTextSize > 0) {
+            setValueTextSize(contentTextSize);
+        }
         if (leftButtonBackground != null) {
             mMinusBtn.setBackgroundDrawable(leftButtonBackground);
         }
         if (rightButtonBackground != null) {
             mPlusBtn.setBackgroundDrawable(rightButtonBackground);
         }
-
         if (leftButtonResources != null) {
             setLeftButtonResources(leftButtonResources);
         }
         if (rightButtonResources != null) {
             setRightButtonResources(rightButtonResources);
         }
-        mContentText.setText(String.valueOf(value));
+        mValueText.setText(String.valueOf(mValue));
         mMinusBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                value--;
-                if (value < minValue) {
-                    value = minValue;
-                }
-                mContentText.setText(String.valueOf(value));
-                if (listener != null) {
-                    listener.onValueChange(NumberCountView.this, value);
-                }
+                mValue--;
+                showValue();
             }
         });
         mPlusBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                value++;
-                if (value > maxValue) {
-                    value = maxValue;
-                }
-                mContentText.setText(String.valueOf(value));
-                if (listener != null) {
-                    listener.onValueChange(NumberCountView.this, value);
-                }
+                mValue++;
+                showValue();
             }
         });
     }
 
+    private void showValue(){
+        if (mValue > mMaxValue) {
+            mValue = mMaxValue;
+        }
+        if (mValue < mMinValue) {
+            mValue = mMinValue;
+        }
+        mValueText.setText(String.valueOf(mValue));
+        if (mListener != null) {
+            mListener.onValueChange(NumberCountView.this, mValue);
+        }
+    }
+
     public void setOnValueChangeListener(OnValueChangeListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 
-    public void setMinMaxValue(int minValue, int maxValue) {
-        this.minValue = minValue;
-        this.maxValue = maxValue;
+    public void setMinValue(int minValue) {
+        this.mMinValue = minValue;
     }
 
-    public void setContentBackground(int resId) {
-        mContentText.setBackgroundResource(resId);
+    public void setMaxValue(int maxValue) {
+        this.mMaxValue = maxValue;
+    }
+
+    public void setValueBackground(int resId) {
+        mValueText.setBackgroundResource(resId);
     }
 
     public void setContentBackground(Drawable drawable) {
-        mContentText.setBackgroundDrawable(drawable);
+        mValueText.setBackgroundDrawable(drawable);
     }
 
-    public void setContentTextColor(int resId) {
-        mContentText.setTextColor(getResources().getColor(resId));
+    public void setValueTextColor(int resId) {
+        mValueText.setTextColor(getResources().getColor(resId));
     }
 
-    public void setText(String text) {
-        mContentText.setText(text);
+    public void setValue(int value) {
+        this.mValue = value;
+        mValueText.setText(String.valueOf(mValue));
     }
 
-    public void setContentTextSize(float size) {
-        mContentText.setTextSize(size);
+    public void setValueTextSize(float size) {
+        mValueText.setTextSize(size);
     }
 
     public void setButtonBackGround(int resId) {

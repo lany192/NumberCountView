@@ -11,5 +11,5 @@
 ## Step 2. Add the dependency
 
     dependencies {
-        compile 'com.github.lany192:NumberCountView:1.0.2'
+        compile 'com.github.lany192:NumberCountView:1.0.3'
     }

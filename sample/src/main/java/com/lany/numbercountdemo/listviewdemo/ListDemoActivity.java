@@ -8,9 +8,6 @@ import android.widget.ListView;
 
 import com.lany.numbercountdemo.R;
 
-/**
- * Created by Sai on 16/2/18.
- */
 public class ListDemoActivity extends Activity implements AdapterView.OnItemClickListener {
     ListView listView;
     @Override

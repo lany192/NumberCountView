@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <ImageView
+    <com.lany.numbercount.SquaredImageView
         android:id="@+id/ivStepperMinus"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -17,7 +17,7 @@
         android:scaleType="centerInside"
         android:src="@drawable/number_count_minus" />
 
-    <ImageView
+    <com.lany.numbercount.SquaredImageView
         android:id="@+id/ivStepperPlus"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

@@ -6,14 +6,13 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class NumberCountView extends RelativeLayout {
     private OnValueChangeListener listener;
     private TextView mContentText;
-    private ImageView mMinusBtn, mPlusBtn;
+    private SquaredImageView mMinusBtn, mPlusBtn;
     private int value = 0;
     private int minValue = 0;
     private int maxValue = 100;

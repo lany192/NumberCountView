@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/ivStepperMinus"
+        android:layout_width="@dimen/NumberCountView_width_button"
+        android:layout_height="match_parent"
+        android:background="@drawable/btn_number_count"
+        android:clickable="true"
+        android:padding="@dimen/NumberCountView_padding_button"
+        android:scaleType="centerInside"
+        android:src="@drawable/number_count_minus" />
+
+    <ImageView
+        android:id="@+id/ivStepperPlus"
+        android:layout_width="@dimen/NumberCountView_width_button"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/btn_number_count"
+        android:clickable="true"
+        android:padding="@dimen/NumberCountView_padding_button"
+        android:scaleType="centerInside"
+        android:src="@drawable/number_count_plus" />
+
+    <TextView
+        android:id="@+id/tvStepperContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/ivStepperPlus"
+        android:layout_toRightOf="@id/ivStepperMinus"
+        android:background="@color/ncv_text_bg"
+        android:gravity="center"
+        android:textColor="@color/ncv_text_color"
+        android:textSize="@dimen/NumberCountView_textSize"
+        tools:text="100" />
+
+</RelativeLayout>

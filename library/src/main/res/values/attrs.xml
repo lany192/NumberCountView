@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="NumberCountView">
-        <attr name="min" format="integer"/>
-        <attr name="max" format="integer"/>
-        <attr name="value" format="integer"/>
-        <attr name="step" format="integer"/>
-        <attr name="text" format="string"/>
-        <attr name="mode" format="enum">
-            <enum name="auto" value="0"/>
-            <enum name="custom" value="1"/>
-        </attr>
+        <attr name="ncv_min" format="integer" />
+        <attr name="ncv_max" format="integer" />
+        <attr name="ncv_value" format="integer" />
         <attr name="ncv_background" format="color|reference"/>
         <attr name="ncv_buttonBackground" format="color|reference"/>
         <attr name="ncv_contentBackground" format="color|reference"/>
         <attr name="ncv_contentTextColor" format="color"/>
         <attr name="ncv_contentTextSize" format="float"/>
-        <attr name="ncv_leftButtonBackground" format="color|reference"/>
-        <attr name="ncv_rightButtonBackground" format="color|reference"/>
+        <attr name="ncv_leftBtnBg" format="color|reference"/>
+        <attr name="ncv_rightBtnBg" format="color|reference"/>
         <attr name="ncv_leftButtonResources" format="color|reference"/>
         <attr name="ncv_rightButtonResources" format="color|reference"/>
     </declare-styleable>

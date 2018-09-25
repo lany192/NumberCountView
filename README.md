@@ -14,7 +14,7 @@
 ## Step 2. Add the dependency
 
     dependencies {
-        implementation 'com.github.lany192:NumberCountView:1.0.4'
+        implementation 'com.github.lany192:NumberCountView:1.0.5'
     }
 
 ## Step 3. use

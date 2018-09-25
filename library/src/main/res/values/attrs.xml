@@ -4,9 +4,12 @@
         <attr name="nv_min" format="integer|reference" />
         <attr name="nv_max" format="integer|reference" />
         <attr name="nv_value" format="integer|reference" />
-        <attr name="nv_btn_background" format="color|reference"/>
-        <attr name="nv_value_background" format="color|reference"/>
-        <attr name="nv_value_text_color" format="color|reference"/>
-        <attr name="nv_value_text_size" format="float|reference"/>
+        <attr name="nv_btn_background" format="color|reference" />
+        <attr name="nv_btn_padding" format="dimension|reference" />
+        <attr name="nv_value_background" format="color|reference" />
+        <attr name="nv_value_text_color" format="color|reference" />
+        <attr name="nv_value_text_size" format="float|reference" />
+        <attr name="nv_value_leftPadding" format="dimension|reference" />
+        <attr name="nv_value_rightPadding" format="dimension|reference" />
     </declare-styleable>
 </resources>

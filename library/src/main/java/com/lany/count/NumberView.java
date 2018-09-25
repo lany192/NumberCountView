@@ -32,7 +32,6 @@ public class NumberView extends LinearLayout {
     private ActionView mRightBtn;
 
 
-
     public NumberView(Context context) {
         super(context);
         init(null);
@@ -53,18 +52,27 @@ public class NumberView extends LinearLayout {
         setGravity(Gravity.CENTER_VERTICAL);
         setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         //-------------------------------------------
-        Drawable background = new ColorDrawable(Color.LTGRAY);
+        Drawable btnBackground = new ColorDrawable(Color.parseColor("#dddddd"));
         int valueTextColor = Color.BLACK;
-        int valueBackgroundColor = Color.parseColor("#f2f2f2");
+        int valueBackgroundColor = Color.parseColor("#eeeeee");
         float valueTextSize = 16;
         int height = dp2px(25);
+        int btnPadding = dp2px(7);
+        int valueLeftPadding = dp2px(8);
+        int valueRightPadding = dp2px(8);
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.NumberView);
 
             mMinValue = a.getInt(R.styleable.NumberView_nv_min, mMinValue);
             mMaxValue = a.getInt(R.styleable.NumberView_nv_max, mMaxValue);
             mValue = a.getInt(R.styleable.NumberView_nv_value, mValue);
-            background = a.getDrawable(R.styleable.NumberView_nv_btn_background);
+            if (a.hasValue(R.styleable.NumberView_nv_btn_background)) {
+                btnBackground = a.getDrawable(R.styleable.NumberView_nv_btn_background);
+            }
+            btnPadding = (int) a.getDimension(R.styleable.NumberView_nv_btn_padding, btnPadding);
+
+            valueLeftPadding = (int) a.getDimension(R.styleable.NumberView_nv_value_leftPadding, valueLeftPadding);
+            valueRightPadding = (int) a.getDimension(R.styleable.NumberView_nv_value_rightPadding, valueRightPadding);
             valueBackgroundColor = a.getColor(R.styleable.NumberView_nv_value_background, valueBackgroundColor);
             valueTextColor = a.getColor(R.styleable.NumberView_nv_value_text_color, valueTextColor);
             valueTextSize = a.getFloat(R.styleable.NumberView_nv_value_text_size, valueTextSize);
@@ -75,19 +83,19 @@ public class NumberView extends LinearLayout {
         mValueText = new TextView(getContext());
         mValueText.setGravity(Gravity.CENTER);
         mValueText.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height));
-        mValueText.setPadding(dp2px(8), 0, dp2px(8), 0);
+        mValueText.setPadding(valueLeftPadding, 0, valueRightPadding, 0);
         mValueText.setText(String.valueOf(mValue));
         mValueText.setTextSize(valueTextSize);
         mValueText.setTextColor(valueTextColor);
         mValueText.setBackgroundColor(valueBackgroundColor);
         //-------------------------------------------
-        int btnPadding = dp2px(7);
+
         mLeftBtn = new ActionView(getContext());
         mLeftBtn.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height));
         mLeftBtn.setImageResource(R.drawable.number_minus);
         mLeftBtn.setPadding(btnPadding, btnPadding, btnPadding, btnPadding);
-        if (background != null) {
-            mLeftBtn.setBackgroundDrawable(background);
+        if (btnBackground != null) {
+            mLeftBtn.setBackgroundDrawable(btnBackground);
         }
         mLeftBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -101,8 +109,8 @@ public class NumberView extends LinearLayout {
         mRightBtn.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height));
         mRightBtn.setImageResource(R.drawable.number_plus);
         mRightBtn.setPadding(btnPadding, btnPadding, btnPadding, btnPadding);
-        if (background != null) {
-            mRightBtn.setBackgroundDrawable(background);
+        if (btnBackground != null) {
+            mRightBtn.setBackgroundDrawable(btnBackground);
         }
         mRightBtn.setOnClickListener(new OnClickListener() {
             @Override

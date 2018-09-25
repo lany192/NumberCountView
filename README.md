@@ -1,4 +1,7 @@
-# NumberCountView
+[![](https://jitpack.io/v/lany192/NumberCountView.svg)](https://jitpack.io/#lany192/NumberCountView)
+
+# 自定义数据加减控件（购物车数量加减）
+
 ## Add it in your root build.gradle at the end of repositories:
 
     allprojects {

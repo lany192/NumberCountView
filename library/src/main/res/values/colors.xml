@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="ncv_button_normal">#cccccc</color>
-    <color name="ncv_button_pressed">#aaaaaa</color>
-    <color name="ncv_text_bg">#dddddd</color>
-    <color name="ncv_text_color">#000000</color>
-</resources>
